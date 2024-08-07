@@ -1,0 +1,35 @@
+.bg-dark {
+    background-color: #111111;
+}
+.card-header{
+width: 50%;
+    height: 25rem;
+    
+    
+
+}
+
+.cardd{
+
+    width: 650px;
+   
+    background:linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("./images.jfif") ;
+    color: beige;
+    border-radius: 20px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.75);
+    background-size: cover;
+   
+    margin: 0 auto;
+  backdrop-filter: rgba(0, 0, 0, 0.493);
+       
+}
+
+.justify-content-center {
+   
+
+    
+}
+.register-photo{
+  
+ 
+}

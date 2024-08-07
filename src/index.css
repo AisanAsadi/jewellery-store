@@ -1,0 +1,70 @@
+body{
+    background-color: #111111;
+    color: #fafafa;
+    font-family: vazirmatn;
+}
+.card-bg{
+    background-color: #1a1c1e;
+}
+.category{
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    text-decoration: wavy;
+    background:linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("./CSS/images.jfif") ;
+    margin: 10px;
+
+   
+}
+.search{
+    background-color: #1a1c1e;
+   display: flex;
+    
+}
+.dark{
+    direction: rtl;
+    height: 40px;
+    border-radius: 10px;
+
+   
+
+}
+.footer{
+    display: flex;
+    gap: 930px;
+  
+
+
+
+
+}
+
+.footer1{
+    margin: 20px;  
+    display: flex;
+    justify-content: right;
+    align-items: right;
+
+    flex-direction: column;
+
+
+    
+
+    
+}
+.footer2{
+margin: 20px;  
+
+  display: flex;
+    justify-content: left;
+    flex-direction: column;
+    align-items: left;
+
+
+}
+.mx-2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
