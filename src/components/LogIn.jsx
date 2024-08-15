@@ -11,6 +11,7 @@ function Login() {
     const handleLogin = async (e) => {
         e.preventDefault();
 
+
         const loginObj = { username, password };
 
         try {
@@ -19,19 +20,16 @@ function Login() {
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(loginObj),
             });
-
+    
             const data = await response.json();
             console.log('Server response:', data);  // Log the response for debugging
-
+    
             if (response.ok) {
-                if (data.token) {
-                  
-                    localStorage.setItem('username', loginObj.username);
-                    localStorage.setItem('TOKEN', data.token);
+                if (data.key) { // توجه به نام کلید 'key'
+                    localStorage.setItem('token', data.key); // ذخیره توکن با نام کلید 'key'
                     toast.success('Login successful');
-               
+                    navigate('/detail');
                 } else {
-                    navigate('/');
                     toast.error('Login failed: No token received');
                 }
             } else {
@@ -45,7 +43,6 @@ function Login() {
             toast.warning('Login failed: ' + err.message);
         }
     };
-
     return (
         <div>
             <div className="offset-lg-3 col-lg-6">

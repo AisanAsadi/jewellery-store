@@ -12,6 +12,7 @@ import Ring from './components/Category/Ring';
 import Neckless from './components/Category/Neckless';
 import Bangle from './components/Category/Bangle'
 import Footer from './components/Footer';
+import CustomerDetail from './components/CustomerDetail';
 
 function App(){
   return (
@@ -26,6 +27,8 @@ function App(){
           <Route path='/success'element={<Success/>}/>
           <Route path='/signin'element={<SignIn/>}/>
           <Route path='/login'element={<Login/>}/>
+          <Route path='/detail'element={<CustomerDetail/>}/>
+
           <Route path='/ring'element={<Ring/>}/>
           <Route path='/neckless'element={<Neckless/>}/>
           <Route path='/bangle'element={<Bangle/>}/>

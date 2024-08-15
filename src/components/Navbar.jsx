@@ -12,27 +12,53 @@ function Navbar(){
 
     const handleShow = ()=>{setShowModal(true)}
     const handleclose = ()=>{setShowModal(false)}
+    async function checkout() {
+        const token = localStorage.getItem('TOKEN');
+        // const orderItems = cart.items.map(item => ({
+        //     product: item.product, // شناسه محصول
+        //     quantity: item.quantity, // مقدار محصول
+        // }));
 
-    async function checkout(id) {
+        console.log('Token:', token); // چاپ توکن برای بررسی صحت
+    
+        if (!token) {
+            console.error('No token found, please log in again.');
+            window.location.assign('/login');
+            return;
+        }
+    
         try {
-            const token = localStorage.getItem('token'); // یا هر جایی که توکن را ذخیره کرده‌اید
-            const id=localStorage.getItem('username')
+            const token = localStorage.getItem('token'); // خواندن توکن با نام کلید 'token'
+            console.log('Token:', token); // نمایش توکن برای بررسی
+    
+            if (!token) {
+                console.error('No token found. Please log in again.');
+                window.location.assign('/login');
+                return;
+            }
+    
             const res = await fetch('https://jewellery-store.chbk.run/api/order/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                     'Authorization': `Bearer ${token}`,
-                    'X-Product-ID': id, // ارسال productId در هدر سفارشی
-             
                 },
                 body: JSON.stringify({ items: cart.items })
             });
+    
             if (!res.ok) {
-                console.error('Network response was not ok', res.statusText);
+                if (res.status === 401) {
+                    console.error('Unauthorized: Please check your token or log in again.');
+                    window.location.assign('/login');
+                } else {
+                    console.error('Network response was not ok', res.statusText);
+                }
                 return;
             }
+    
             const data = await res.json();
             console.log('Response data:', data);
+    
             if (data.token) {
                 window.location.assign(data.token);
             }
@@ -40,7 +66,6 @@ function Navbar(){
             console.error('Fetch error:', error);
         }
     }
- 
     return(
         <>
         <NavbarBS className='border-bottom border-secondary'>
@@ -93,6 +118,7 @@ function Navbar(){
                     <h3>سبد خرید خالی است</h3>
                 )}
                 <Button className='mt-4 btn-light' onClick={checkout}>ثبت سفارش</Button>
+
                  
             </Modal.Body>
         </Modal>
